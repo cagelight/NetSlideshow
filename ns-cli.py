@@ -244,7 +244,7 @@ class GUI(wx.App):
 		timelabel = ""
 		if (hr>0):
 			timelabel += str(hr)+"h"
-		if (mn>0):
+		if (mn>0 or hr>0):
 			timelabel += str(mn)+"m"
 		timelabel += str(sc)+"s"
 		self.TimeText.SetLabel("Next: "+timelabel)

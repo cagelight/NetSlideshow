@@ -227,7 +227,27 @@ class GUI(wx.App):
 		
 	def OnCount(self, evt):
 		val = evt.GetValue()
-		self.TimeText.SetLabel("Next: "+str(val))
+		timeremains = True
+		hr, mn, sc = 0, 0, 0
+		while timeremains:
+			if (val >= 3600):
+				hr+=1
+				val -= 3600
+			elif (val >= 60):
+				mn+=1
+				val -= 60
+			elif (val > 0):
+				sc = val
+				break
+			else:
+				break
+		timelabel = ""
+		if (hr>0):
+			timelabel += str(hr)+"h"
+		if (mn>0):
+			timelabel += str(mn)+"m"
+		timelabel += str(sc)+"s"
+		self.TimeText.SetLabel("Next: "+timelabel)
 		
 	def OnCheckRand(self, evt):
 		val = self.RandBox.GetValue()
